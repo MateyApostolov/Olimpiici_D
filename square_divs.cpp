@@ -1,29 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxd = 1001;
-int del[maxd];
-
-void br_del(long long n) {
-    int br = 0;
-    for(int i = 1; i * i <= n; i++) {
+long long br_del(unsigned long long n) {
+    long long br = 0;
+    for(long long i = 1; i * i <= n; i++) {
         if(n % i != 0) continue;
-        if(i * i == n) del[i]++;
-        else {
-            del[i]++;
-            del[n / i]++;
-        }
+        if(i * i == n) br++;
+        else br += 2;
     }
-    return;
+    return br;
 }
 
 int main () {
-    long long n, br = 1;
+    long long n;
     cin >> n;
-    br_del(n);
-    for(int i = 1; i <= maxd; i++) {
-        br += del[i];
-    }
-    cout << br;
+    cout << br_del(n * n);
+
     return 0;
 }
