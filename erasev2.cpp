@@ -14,10 +14,12 @@ int main () {
     for(int i = 0; i < q; i++) {
         cin >> qc;
         vector <int> newn;
-        for(int i = 0; i < nums.size(); i++) {
-            if(i != qc - 1) {
-                newn.push_back(nums[i]);
-            }
+        int s = nums.size();
+        for(int i = 0; i < qc - 1; i++) {
+            newn.push_back(nums[i]);
+        }
+        for(int i = qc; i < s; i++) {
+            newn.push_back(nums[i]);
         }
         nums = newn;
     }

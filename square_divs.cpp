@@ -2,8 +2,8 @@
 using namespace std;
 
 long long br_del(unsigned long long n) {
-    long long br = 0;
-    for(long long i = 1; i * i <= n; i++) {
+    long long br = 0, koren = sqrt(n);
+    for(long long i = 1; i <= koren; i++) {
         if(n % i != 0) continue;
         if(i * i == n) br++;
         else br += 2;
