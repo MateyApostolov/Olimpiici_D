@@ -32,25 +32,16 @@ int br_del(int num) {
 }
 
 int main () {
-    int a, b;
-    cin >> a >> b;
-    vector <int> dela = del(a), delb = del(b);
+    int n;
+    cin >> n;
+    vector <int> deln = del(n);
     unordered_map <long long, bool> razd;
-    for(int i1 = 0; i1 < dela.size(); i1++) {
-        for(int i2 = 0; i2 < delb.size(); i2++) {
-            razd[(long long)dela[i1] * delb[i2]] = true;
+    for(int i1 = 0; i1 < deln.size(); i1++) {
+        for(int i2 = 0; i2 < deln.size(); i2++) {
+            razd[(long long)deln[i1] * deln[i2]] = true;
         }
     }
-    int brab = razd.size(), br = 0;
-
-    for(int i1 = 0; i1 < dela.size(); i1++) {
-        for(int i2 = 0; i2 < delb.size(); i2++) {
-            int dx = br_del(dela[i1]), dy = br_del(delb[i2]);
-            if(brab % (dx + dy) == 0) {
-                br++;
-            }
-        }
-    }
-    cout << br;
+    int brn = razd.size();
+    cout << brn;
     return 0;
 }
