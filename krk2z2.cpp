@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const int maxn = 200001;
+int pozn2[maxn];
+
 int main () {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -15,21 +18,13 @@ int main () {
     }
     for(int i = 0; i < n; i++) {
         cin >> r2[i];
+        pozn2[r2[i]] = i;
     }
-    for(int i1 = 0; i1 < n; i1 += 1 + br) {
+    for(int i1 = 1; i1 < n; i1++) {
         br = 0;
-        int h = 0;
-        for(int i2 = 0; i2 < n; i2++) {
-            if(r2[i2] == r1[i1]) {
-                h = i2;
-                break;
-            }
+        if(pozn2[r1[i1 + br - 1]] + 1 == pozn2[r1[i1 + br]]) {
+            brk--;
         }
-        while(h + br < n && r2[h + br] == r1[i1 + br]) {
-            br++;
-        }
-        br--;
-        brk -= br;
         ///cout << brk << "\n";
     }
     cout << brk;

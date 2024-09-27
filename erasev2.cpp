@@ -1,30 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+const int maxk = 1000;
+
 int main () {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    vector <int> nums;
     int n, q, qc;
     cin >> n >> q;
+    vector <vector <int>> nc(maxk);
     for(int i = 1; i <= n; i++) {
-        nums.push_back(i);
+        nc[i / maxk].push_back(i);
     }
     for(int i = 0; i < q; i++) {
         cin >> qc;
-        vector <int> newn;
-        int s = nums.size();
-        for(int i = 0; i < qc - 1; i++) {
-            newn.push_back(nums[i]);
-        }
-        for(int i = qc; i < s; i++) {
-            newn.push_back(nums[i]);
-        }
-        nums = newn;
+        nc[qc / maxk].erase(nc[qc / maxk].begin() + qc);
     }
-    for(int i = 0; i < nums.size(); i++) {
-        cout << nums[i] << ' ';
-    }
+    for(int i = 0; i < )
+
     return 0;
 }
