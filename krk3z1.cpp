@@ -8,31 +8,23 @@ int main () {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    int n, br = 0, l = 0, r = 0;
+    int n, br = 0, r = -1;
     long long s;
     cin >> n >> s;
     for(int i = 0; i < n; i++) {
         cin >> nc[i];
     }
-    long long sum = nc[0];
-    while(r < n && l < n - 1) {
-        while(r + 1 < n && sum < s) {
+    long long sum = 0;
+    for(int l = 0; l < n; l++) {
+        while(r + 1 < n && sum + nc[r + 1] <= s) {
             r++;
             sum = sum + nc[r];
             ///cout << "br = " << br << ", sum = " << sum << ", l = " << l << ", r = " << r << '\n';
         }
         if(sum == s) {
             br++;
-            sum = sum - nc[l];
-            l++;
-           ///cout << "br = " << br << ", sum = " << sum << ", l = " << l << ", r = " << r << '\n';
-            continue;
         }
-        while(l + 1 <= r && sum > s) {
-            sum = sum - nc[l];
-            l++;
-            ///cout << "br = " << br << ", sum = " << sum << ", l = " << l << ", r = " << r << '\n';
-        }
+        sum = sum - nc[l];
     }
     cout << br;
     return 0;
