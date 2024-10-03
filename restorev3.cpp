@@ -16,13 +16,13 @@ int main () {
     }
     for(int i1 = 0; i1 < n; i1++) {
         cin >> nc;
-        int brh = d.size() - 1 - nc;
-        cout << d[brh] << ' ';
+        int brh = n - i1 - nc;
         int h = 0;
         while(h < koren && brh > d[h].size()) {
-            brh -= nc[h].size();
+            brh -= d[h].size();
             h++;
         }
+        cout << d[h][brh - 1] << ' ';
         d[h].erase(d[h].begin() + brh - 1);
     }
     return 0;
