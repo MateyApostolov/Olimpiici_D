@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = 100000, koren = 100;
+const int maxn = 100000, koren = 1000;
 bool brc[maxn];
 
 int main () {
