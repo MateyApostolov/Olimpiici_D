@@ -45,7 +45,7 @@ int main () {
         int h = 0;
         while(h < primen.size() && isd == true) {
             for(int i = l; i < l + k; i++) {
-                cout << nc[i] << ' ';
+              ///  cout << nc[i] << ' ';
                 if(nc[i] % primen[h] != 0) {
                     isd = false;
                 }
@@ -54,7 +54,7 @@ int main () {
                 bigd = max(primen[h], bigd);
             }
             h++;
-            cout << '\n' << primen[h] << '\n';
+            ///cout << '\n' << primen[h] << '\n';
         }
 
     }

@@ -1,24 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxc = 100000;
-int brc1[maxc], brc2[maxc];
+const int maxc = pow(10,5);
+int brc1[maxc];
 
 int main () {
     int n, x, nc, br = 0;
     cin >> n >> x;
-    int nc1[n], nc2[n];
+    int nc1, nc2;
     for(int i = 0; i < n; i++) {
-        cin >> nc1[i];
-        brc1[nc1[i]]++;
+        cin >> nc1;
+        brc1[nc1]++;
     }
     for(int i = 0; i < n; i++) {
-        cin >> nc2[i];
-        brc2[nc2[i]]++;
-    }
-    for(int i = 0; i < n; i++) {
-        if(brc1[nc1[i]] > 0) {
-            br += brc1[nc1[i]] * brc2[x - nc1[i]];
+        cin >> nc2;
+        if(x - nc2 > 0) {
+            br += brc1[x - nc2];
         }
     }
     cout << br;
