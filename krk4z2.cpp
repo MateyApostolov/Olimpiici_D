@@ -1,14 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = 1000000, maxbrp = 100000;
-bool er[maxn], pr[maxbrp];
+const int maxn = 1000001, maxbrp = 1000001;
+bool er[maxn];
+int pr[maxbrp];
 vector <int> prime;
 
 void eratosten () {
-    for(int d = 2; d < maxn; d++) {
+    for(int d = 2; d * d < maxn; d++) {
         if(!er[d]) {
-            for(int h = d + d; h < maxn; h += d) {
+            for(int h = d * d; h < maxn; h += d) {
                 er[h] = true;
             }
         }
@@ -25,14 +26,16 @@ void set_prime () {
 }
 
 int ng_del (int nc) {
-    int ngd = 2;
-    for(int i = 0; i < prime.size(); i++) {
+    int ngd, i = 0;
+    while(nc > 1) {
+        if(!er[nc]) return nc;
         if(nc % prime[i] == 0) {
             ngd = prime[i];
         }
         while(nc % prime[i] == 0) {
             nc /= prime[i];
         }
+        i++;
     }
     return ngd;
 }
@@ -43,21 +46,23 @@ int main () {
     int nc[n];
     eratosten();
     set_prime();
+    int h;
     for(int i = 0; i < n; i++) {
-        cin >> nc[i];
+        cin >> h;
+        nc[i] = ng_del(h);
     }
+///    for(int i = 0; i< n;i++) cout << nc[i]<<' ';
     for(int l = 0; l < n; l++) {
-        while(r + 1 < n && !pr[ng_del(nc[r + 1])]) {
-            pr[ng_del(nc[r + 1])] = true;
+        while(r + 1 < n && pr[nc[r + 1]] == 0) {
+            pr[nc[r + 1]]++;
             r++;
         }
         if(r - l + 1 > izr - izl + 1) {
             izl = l;
             izr = r;
         }
-        l++;
-        pr[maxbrp] = {};
+        pr[nc[l]]--;
     }
-    cout << izl << ' ' << izr;
+    cout << izl + 1 << ' ' << izr + 1;
     return 0;
 }
