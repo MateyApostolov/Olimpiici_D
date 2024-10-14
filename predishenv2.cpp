@@ -15,7 +15,7 @@ int main () {
     sort(nc, nc + n);
     for(int i = 1; i < n; i++) {
         if(nc[i].first == nc[i - 1].first) {
-            iz[i] = nc[i - 1].second;
+            iz[nc[i].second] = nc[i - 1].second;
         }
     }
     for(int i = 0; i < n; i++) {

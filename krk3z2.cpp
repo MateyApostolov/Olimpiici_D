@@ -19,16 +19,12 @@ int main () {
     string s;
     stringstream ss;
     bool ch = false;
-    getline(cin, s);
-    int r = 1, minr = n, minl = 1;
-    for(int i = 0; i < k; i++) {
-        getline(cin, s);
-        ss << s;
-        int nc;
-        while(ss >> nc) {
-            isc[i][nc] = true;
+    int r = 1, minr = n, minl = 1, nc;
+    for(int i1 = 0; i1 < k; i1++) {
+        for(int i2 = 0; i2 < k; i2++) {
+            cin >> nc;
+            isc[i1][nc] = true;
         }
-        ss.clear();
     }
     for(int l = 1; l <= n; l++) {
         while(r <= n && !ch) {
