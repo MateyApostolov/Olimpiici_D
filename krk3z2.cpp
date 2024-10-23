@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = pow(10, 5) + 1, maxk = pow(10, 4) + 1;
-bool isc[maxk][maxn];
+const int maxk = pow(10, 4) * 4 + 1;
 int rr[maxk], n, k;
 
 bool check_r () {
@@ -15,36 +14,39 @@ bool check_r () {
 }
 
 int main () {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     cin >> n >> k;
-    string s;
-    stringstream ss;
+    int r = -1, minr = n, minl = 1, nc, brc;
     bool ch = false;
-    int r = 1, minr = n, minl = 1, nc;
+    map <int, vector<int>> mp;
     for(int i1 = 0; i1 < k; i1++) {
-        for(int i2 = 0; i2 < k; i2++) {
+        cin >> brc;
+        for(int i2 = 0; i2 < brc; i2++) {
             cin >> nc;
-            isc[i1][nc] = true;
+            mp[nc].push_back(i1);
         }
     }
-    for(int l = 1; l <= n; l++) {
-        while(r <= n && !ch) {
-            for(int i = 0; i < k; i++) {
-                if(isc[i][r]) {
-                    rr[i]++;
-                }
+    vector <pair<int, vector<int>>> vc;
+    for(auto x : mp) {
+        vc.push_back({x.first, x.second});
+    }
+    for(int l = 0; l < vc.size(); l++) {
+        while(r + 1 < vc.size() && !ch) {
+            for(int i = 0; i < vc[r + 1].second.size(); i++) {
+                rr[vc[r + 1].second[i]]++;
             }
             ch = check_r();
             r++;
         }
-        if(ch && r - l - 1 < minr - minl) {
-            minr = r - 1;
-            minl = l;
+        if(ch && vc[r].first - vc[l].first < minr - minl) {
+            minr = vc[r].first;
+            minl = vc[l].first;
         }
-        if(r == n + 1 && !ch) break;
-        for(int i = 0; i < k; i++) {
-            if(isc[i][l]) {
-                rr[i]--;
-            }
+        if(r == n && !ch) break;
+        for(int i = 0; i < vc[l].second.size(); i++) {
+            rr[vc[l].second[i]]--;
         }
         ch = check_r();
     }
