@@ -16,12 +16,12 @@ int main () {
     }
     for(int i = 0; i < q; i++) {
         cin >> l >> r;
-        long long h = 0;
+        int h = 0;
         for(int x = l; x <= r; x++) {
             h += pref[r] - pref[x - 1];
         }
-        iz7 += h % d7;
-        iz9 += h % d9;
+        iz7 = (iz7 + h) % d7;
+        iz9 = (iz9 + h) % d9;
     }
     cout << iz7 % d7 << ' ' << iz9 % d9;
     return 0;
