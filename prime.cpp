@@ -48,7 +48,7 @@ int main () {
         }
         cout << d << ' ';
         for(j = 0; j < k; j++) {
-            if(j != k && p[j]) {
+            if(p[j]) {
                 r[j]--;
                 if(r[j] >= 0) break;
                 else {
