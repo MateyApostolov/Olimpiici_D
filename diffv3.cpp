@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
+#define int long long
 using namespace std;
 
 int br[20], md[20];
 
 int d(int a) {
     for(int i = 1; i <= 17; i++) {
-        if(br[i] > a) return i;
+        if(br[i] >= a) return i;
     }
     return -1;
 }
@@ -39,8 +40,8 @@ int cr (int a, int brc) {
     }
 }
 
-int main () {
-    long long n, r, nums = 9, a, b;
+main () {
+    long long n, nums = 9, a, b;
     cin >> n >> a >> b;
     for(int i = 1; i <= 17; i++) {
         br[i] = br[i - 1] + nums * i;
@@ -50,7 +51,7 @@ int main () {
     for(int i = 2; i <= 17; i++) {
         md[i] = md[i - 1] * 10;
     }
-    int brn = dn(n), brc = br[brn - 1] + (n - md[brc] - 1) * brn;
+    int brn = dn(n), brc = br[brn - 1] + (n - md[brn] + 1) * brn;
     cout << cr(a, brc) - cr(b, brc);
     return 0;
 }

@@ -46,7 +46,9 @@ int main () {
         for(int i = 0; i < k; i++) {
             d *= pow(del[i].first, r[i]);
         }
-        cout << d << ' ';
+        for(int i = 0; i < k; i++) cout << r[i] << ' ';
+        cout << " - " << d << ' ';
+        cout << '\n';
         for(j = 0; j < k; j++) {
             if(p[j]) {
                 r[j]--;
