@@ -32,17 +32,6 @@ int main () {
         s[i] = (s[i] - 'a' + sch[i + 1]) % 26 + 'a';
     }
     ans = s;
-    for(int i1 = 0; i1 < q; i1++) {
-        string hs = s;
-        for(int i2 = nc[i1].first.first - 1; i2 <= nc[i1].first.second - 1; i2++) {
-            int hb = hs[i2] - 'a' - nc[i1].second;
-            if(hb < 0) {
-                hb += 26;
-            }
-            hs[i2] = hb + 'a';
-        }
-        ans = min(ans, hs);
-    }
     cout << ans;
     return 0;
 }
