@@ -27,14 +27,26 @@ int main () {
     ans = s;
     for(int i1 = 0; i1 < q; i1++) {
         string hs = s;
+        bool t = true;
+        for(int x = 0; x < nc[i1].first.first; x++) {
+            if(s[x] > ans[x]) {
+                t = false;
+                break;
+            }
+        }
+        if(!t) continue;
         for(int i2 = nc[i1].first.first - 1; i2 <= nc[i1].first.second - 1; i2++) {
             int hb = hs[i2] - 'a' - nc[i1].second;
             if(hb < 0) {
                 hb += 26;
             }
             hs[i2] = hb + 'a';
+            if(hs[i2] > ans[i2]) {
+                t = false;
+                break;
+            }
         }
-        ans = min(ans, hs);
+        if(t) ans = hs;
     }
     cout << ans;
     return 0;

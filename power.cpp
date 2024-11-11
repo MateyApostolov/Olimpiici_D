@@ -2,7 +2,7 @@
 using namespace std;
 
 const int maxn = pow(10, 5) * 2 + 1, d7 = pow(10, 9) + 7, d9 = pow(10, 9) + 9;
-int pref[maxn];
+long long pref[maxn], d[maxn];
 
 int main () {
     ios_base::sync_with_stdio(false);
@@ -12,16 +12,15 @@ int main () {
     cin >> n >> q;
     for(int i = 1; i <= n; i++) {
         cin >> nc;
+        d[i] = nc * i;
         pref[i] = pref[i - 1] + nc;
     }
     for(int i = 0; i < q; i++) {
         cin >> l >> r;
-        int h = 0;
-        for(int x = l; x <= r; x++) {
-            h += pref[r] - pref[x - 1];
-        }
-        iz7 = (iz7 + h) % d7;
-        iz9 = (iz9 + h) % d9;
+        int h7 = (d[r] - d[l]) % d7 - (l - 1) * (pref[r] - pref[l - 1]);
+        int h9 = (d[r] - d[l]) % d9 - (l - 1) * (pref[r] - pref[l - 1]);
+        iz7 = (iz7 + h7) % d7;
+        iz9 = (iz9 + h9) % d9;
     }
     cout << iz7 % d7 << ' ' << iz9 % d9;
     return 0;
