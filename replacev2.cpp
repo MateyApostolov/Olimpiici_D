@@ -18,12 +18,15 @@ int main () {
             r++;
             brcr[nc[r]]++;
             maxc = 0;
-            for(int i = 0; i < 100; i++) {
+            for(int i = 0; i < 101; i++) {
                 maxc = max(maxc, brcr[i]);
             }
         }
-        maxr = max(maxr, r - l);
-        brcr[l]--;
+        if(r - l + 1 <= k + maxc) maxr = max(maxr, r - l + 1);
+        else {
+            maxr = max(maxr, r - l);
+        }
+        brcr[nc[l]]--;
         maxc = 0;
         for(int i = 0; i < 100; i++) {
             maxc = max(maxc, brcr[i]);
