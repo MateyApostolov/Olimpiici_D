@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const long long maxiz = 1001;
-long long prefn[maxiz][maxiz], num[maxiz][maxiz];
+const int maxiz = 1001;
+int prefn[maxiz][maxiz], num[maxiz][maxiz];
 
-bool is_prime(long long num) {
+bool is_prime(int num) {
     double koren = sqrt(num);
-    if(num == 1) return false;
-    long long i;
+    if(num <= 1) return false;
+    int i;
     for(i = 2; i < koren; i++) {
         if(num % i == 0) return false;
     }
@@ -16,7 +16,10 @@ bool is_prime(long long num) {
 }
 
 int main () {
-    long long n, m, brpr = 0;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int n, m, brpr = 0;
 //    cin >> n; cout << is_prime(n); return 0;
     cin >> n >> m;
     for(int r = 1; r <= n; r++) {
