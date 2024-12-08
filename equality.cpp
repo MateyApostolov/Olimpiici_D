@@ -37,16 +37,16 @@ int main () {
     stringstream ss;
     ss << s;
     ss >> s1 >> s2 >> eq;
-    int os = max(max(maxC(s1), maxC(s2)), maxC(eq));
+    int os = max(maxC(s1), max(maxC(s2), maxC(eq)));
     reverse(s1.begin(), s1.end());
     reverse(s2.begin(), s2.end());
     reverse(eq.begin(), eq.end());
     while(true) {
-        long long sb1, sb2, sbe;
+        int sb1, sb2, eq3;
         sb1 = sb(s1, os);
         sb2 = sb(s2, os);
-        sbe = sb(eq, os);
-        if(sb1 + sb2 == sbe) break;
+        eq3 = sb(eq, os);
+        if(sb1 + sb2 == eq3) break;
         os++;
     }
     cout << os;
