@@ -1,32 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-long long my_pow(long long num, long long st) {
-    int n = 1;
-    for(int i = 0; i < st; i++) {
-        n *= num;
-    }
-    return n;
-}
-
 int main () {
-    long long p, n, c = 1, sk = 0;
+    unsigned long long p, n, c = 1, num = 0;
     cin >> p >> n;
-    while(n > (p - 1) * my_pow(p, c - 1) * c) {
-        n -= (p - 1) * my_pow(p, c - 1) * c;
+    while(n >= pow(p, c - 1) * c * (p - 1)) {
+        n -= pow(p, c - 1) * c * (p - 1);
+        num += pow(p, c - 1) * (p - 1);
+        ///cout << n << ' ' << c << ' ' << num << '\n';
         c++;
-        sk += (p - 1) * my_pow(p, c - 1) * c;
     }
+    num += n / c;
     if(n % c == 0) {
-        sk += n / c - 1;
+        ///cout << num << ' ';
+        vector <char> nump;
+        while(num > 0) {
+            if(num % p > 9) {
+                nump.push_back(char(num % p + 'A' - 10));
+            } else {
+                nump.push_back(char(num % p + '0'));
+            }
+            num /= p;
+        }
+        cout << nump[0];
     } else {
-        sk += n / c;
+        num++;
+        ///cout << num << ' ';
+        vector <char> nump;
+        while(num > 0) {
+            if(num % p > 9) {
+                nump.push_back(char(num % p + 'A' - 10));
+            } else {
+                nump.push_back(char(num % p + '0'));
+            }
+            num /= p;
+        }
+        reverse(nump.begin(), nump.end());
+        unsigned long long ost = n % c;
+        cout << nump[ost - 1];
     }
-    string s = ten_to_pbr(sk + 1, p);
-    if(x % c == 0) {
-        cout << s[s.size() - 1];
-    } else {
 
-    }
+
+
     return 0;
 }

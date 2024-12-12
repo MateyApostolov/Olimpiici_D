@@ -9,6 +9,7 @@ long long sb (string s, long long os) {
         } else {
             sum += (s[i] - 'A' + 10) * pow(os, i);
         }
+        cout << sum << '\n';
     }
     return sum;
 }
