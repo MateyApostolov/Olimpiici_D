@@ -45,8 +45,8 @@ int main () {
             nc[c] = false;
         }
     }
-    while(auto x : nc) {
-        if(x[i].second) {
+    for(auto x : nc) {
+        if(x.second) {
             sum = sbor(sum, x.first);
         }
     }
