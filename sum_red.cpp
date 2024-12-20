@@ -28,25 +28,14 @@ string sbor (string n1, string n2) {
 int main () {
     int n;
     cin >> n;
-    string sum, c;
-    map <string, bool> nc;
+    string sum = "0", c;
+    map <string, int> nc;
     for(int i1 = 0; i1 < n; i1++) {
         cin >> c;
-        bool t = true;
-        for(auto x : nc) {
-            if(x.second) {
-                t = false;
-                break;
-            }
-        }
-        if(t) {
-            nc[c] = true;
-        } else {
-            nc[c] = false;
-        }
+        nc[c]++;
     }
     for(auto x : nc) {
-        if(x.second) {
+        if(x.second == 1) {
             sum = sbor(sum, x.first);
         }
     }
