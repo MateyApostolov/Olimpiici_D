@@ -2,7 +2,7 @@
 using namespace std;
 
 const int maxn = 9;
-int a, b, x, y, n, bestway = 10e9, way = 0;
+int a, b, x, y, n, bestway = 10e9, way;
 pair <int, int> wk[maxn];
 vector <int> wk_idx;
 bool used[maxn];
@@ -12,7 +12,8 @@ int raz (pair<int, int> k, pair<int, int> xy) {
 }
 
 void rec_way () {
-    if(wk_idx[0] == n) {
+    if(wk_idx.size() == n) {
+        way = 0;
         for(int i = 0; i + 1 < n; i++) {
             way += raz(wk[wk_idx[i]], wk[wk_idx[i + 1]]);
         }
@@ -20,7 +21,6 @@ void rec_way () {
         way += raz(make_pair(x, y), wk[wk_idx[wk_idx.size() - 1]]);
         if(bestway > way) {
             bestway = way;
-            way = 0;
         }
     }
     for(int i = 0; i < n; i++) {
