@@ -2,7 +2,7 @@
 using namespace std;
 
 const int maxn = 2000000;
-int min_del[maxn], adel[maxn];
+int min_del[maxn], adel[maxn], bdel[maxn];
 
 void eratosten (int n) {
     for(long long d = 2; d <= n; d++) {
@@ -15,24 +15,26 @@ void eratosten (int n) {
 }
 
 int main () {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     int n, q, a, b;
     cin >> n >> q;
     eratosten(n);
     for(int i = 0; i < q; i++) {
         cin >> a >> b;
-        a = a * b;
-        int res = 1, ha = a;
-        adel[maxn] = {};
+        int res = 1, ha = a, hb = b;
+        unordered_map <int, int> del;
         while(ha > 1) {
-            adel[min_del[ha]]++;
+            del[min_del[ha]]++;
             ha /= min_del[ha];
         }
-        for(int x = 2; x <= a; x++) {
-            int br = adel[x] / 2;
-            while(br > 0) {
-                res *= x;
-                br--;
-            }
+        while(hb > 1) {
+            del[min_del[hb]]++;
+            hb /= min_del[hb];
+        }
+        for(auto x : del) {
+            res *= pow(x.first, x.second / 2);
         }
         cout << res << ' ';
     }
