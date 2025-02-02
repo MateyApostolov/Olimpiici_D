@@ -23,8 +23,8 @@ int main () {
             a[nc[i]]++;
         }
     }
-    for(int i = 0; i < maxn; i++) {
-        br3 += a[i] * c[i];
+    for(int i = 0; i < n; i++) {
+        br3 += a[nc[i]] * c[nc[i]];
     }
     cout << br3;
     return 0;
