@@ -2,25 +2,23 @@
 using namespace std;
 
 int main () {
-    char s;
-    stack <pair<char, int>> open;
-    vector <pair<int, int>> pos;
-    int brb = 0, i = 0;
-    while(cin >> s) {
-        i++;
-        if(s == '(') {
-            open.push({s, i});
-        }
-        if(s == ')') {
-            if(!open.empty()) {
-                pos.push_back({open.top().second, i});
-                open.pop();
-                brb++;
-            }
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    string s;
+    cin >> s;
+    int brb = 0;
+    for(int i1 = 0; i1 < s.size(); i1++) {
+        if(s[i1] ==  ')') continue;
+        stack <int> sk;
+        for(int i2 = i1; i2 < s.size(); i2++) {
+            if(s[i2] == '(') sk.push(1);
+            else if(!sk.empty())  sk.pop();
+            else break;
+            if(sk.empty()) brb++;
         }
     }
-    for(int i = 0; i < pos.size(); i++) {
-        cout << pos[i].first << ' ' << pos[i].second << '\n';
-    }
+    cout << brb;
+
     return 0;
 }
