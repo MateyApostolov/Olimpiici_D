@@ -7,10 +7,10 @@ bool used[maxn];
 
 void eratosten () {
     long long mul;
-    for(long long d = 2; d < maxn; d++) {
+    for(int d = 2; d * d < maxn; d++) {
         if(used[d]) continue;
         mul = d * d;
-        for(long long h = mul; h < maxn; h += d) {
+        for(int h = mul; h < maxn; h += d) {
             used[h] = true;
         }
     }
