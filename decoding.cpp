@@ -5,7 +5,7 @@ int main () {
     string st;
     getline(cin, st);
     vector <char> num;
-    int hi = 0, d = 0, s = 0, beg, step;
+    int hi = 0, d = 0, s = 0, beg = 0, step;
     for(int i = 0; i < st.size(); i++) num.push_back(st[i]);
     for(int i = 0; isdigit(num[i]); i++) d = d * 10 + (9 - (num[i] - '0'));
     for(int i = num.size() - 1; isdigit(num[i]); i--) s = s + (9 - (num[i] - '0')) * pow(10, num.size() - 1 - i);
