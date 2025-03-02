@@ -16,18 +16,12 @@ int main () {
     for(int i = 0; i < q; i++) {
         cin >> qc;
         long long sum2 = 1;
-        for(int x = 0; x < n; x++) {
-            if(s[x] > qc) {
-                if(i == q - 1) cout << sum2;
-                else cout << sum2 << ' ';
-                break;
-            }
+        for(int x = n - 1; x >= 0; x--) {
+            if(s[x] > qc) continue;
+            qc -= s[x];
             sum2 += pow(2, x);
         }
-        if(s[n - 1] <= qc) {
-            if(i == q - 1) cout << sum2;
-            else cout << sum2 << ' ';
-        }
+        cout << sum2 << ' ';
     }
     return 0;
 }
