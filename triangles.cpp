@@ -7,7 +7,10 @@ int main () {
     hn = n;
     bool t = true;
     while(n > 0) {
-        unsigned long long hi = sqrt(n);
+        if(n < 4) {
+            while(n < )
+        }
+        unsigned long long hi = floor(sqrt(n));
         n -= hi * hi;
         if(t) brb += hi * hi;
         t = !t;
