@@ -2,25 +2,48 @@
 using namespace std;
 
 const int maxi = pow(10, 6);
-int brk[maxi];
+int n, m, k, l, r, mid;
+int nc[maxi], kl[maxi];
 
-int main () {
-    int n, m, k, idx = 0, hi = 0, maxr = 0;
-    cin >> n >> m >> k;
-    int nc[n], kl[m];
-    for(int i = 0; i < n; i++) cin >> nc[i];
-    for(int i = 0; i < m; i++) cin >> kl[i];
-    sort(nc, nc + n);
-    sort(kl, kl + m);
-    while(hi < n) {
-        while(brk[kl[idx + 1]] != 0 && idx + 1 < m && abs(nc[hi] - kl[idx]) > abs(nc[hi] - kl[idx + 1]) && brk[kl[idx + 1]] < k) {
+bool ok (int t) {
+    bool po[maxi] = {};
+    int idx = 0, brk[maxi] = {};
+    for(int i = 0; i < n; i++) {
+        if(abs(nc[i] - kl[idx]) <= t && brk[kl[idx]] < k) {
+            brk[kl[idx]]++;
+            po[nc[i]] = true;
+        } else {
+            if(idx == m - 1) break;
             idx++;
         }
-        brk[kl[idx]]++;
-        maxr = max(maxr, abs(nc[hi] - kl[idx]));
-        hi++;
-        if(brk[kl[idx]] == k) idx = 0;
     }
-    cout << maxr;
+    for(int i = 0; i < n; i++) {
+        if(!po[nc[i]]) return true;
+    }
+    return false;
+}
+
+
+int main () {
+    cin >> n >> m >> k;
+    for(int i = 0; i < n; i++) {
+        cin >> nc[i];
+        r = max(r, nc[i]);
+    }
+    for(int i = 0; i < m; i++) {
+        cin >> kl[i];
+        r = max(r, kl[i]);
+    }
+    sort(nc, nc + n);
+    sort(kl, kl + m);
+    while(l <= r) {
+        mid = (l + r) / 2;
+        if(ok(mid)) {
+            l = mid + 1;
+        } else {
+            r = mid - 1;
+        }
+    }
+    cout << l;
     return 0;
 }

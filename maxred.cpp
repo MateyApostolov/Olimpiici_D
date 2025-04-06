@@ -4,8 +4,11 @@ using namespace std;
 int main () {
     int n, k;
     cin >> n >> k;
-    int a[2 * n];
-    for(int i = 0; i < 2 * n; i++) cin >> a[i];
+    string s;
+    cin >> s;
+    for(int i = 0; i < n; i++) {
+
+    }
 
     return 0;
 }
