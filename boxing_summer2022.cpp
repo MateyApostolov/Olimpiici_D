@@ -15,7 +15,7 @@ int main () {
         }
         if(r != n - 1 || muls >= k) brt += n - r;
         sum -= nc[i];
-        muls -= nc[i] * sum;
+        muls -= sum * nc[i];
         i++;
     }
     cout << brt;
