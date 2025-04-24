@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-long long a, k, b, m, x, l, r = pow(10, 18) / 2, mid;
+long long a, k, b, m, x, l, r = pow(10, 18), mid;
 
 bool ok (long long num) {
     long long sumd = a * (num - (num / k)) + b * (num - (num / m));
