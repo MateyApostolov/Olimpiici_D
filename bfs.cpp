@@ -41,20 +41,26 @@ int main () {
                 if(d2[px][py] == 'x') continue;
                 if(td2[px][py] == t) {
                     pc[px][py] = max(pc[p.first][p.second], pc[px][py]);
+                    continue;
                 }
                 if(td2[px][py] > 0) continue;
+                pc[px][py] = pc[p.first][p.second];
                 td2[px][py] = t;
                 ht.push_back({px, py});
             }
         }
         curt = ht;
     }
-    /*for(int r = 1; r <= n; r++) {
+    for(int r = 1; r <= n; r++) {
         for(int c = 1; c <= m; c++) {
-            cout << td2[r][c] - 1 << ' ';
+            if(d2[r][c] == '.' || d2[r][c] == '+') {
+                cout << setw(3) << pc[r][c];
+            } else {
+                cout << setw(3) << d2[r][c];
+            }
         }
         cout << '\n';
-    }*/
+    }
     cout << td2[outx][outy] - 1 << ' ' << pc[outx][outy];
     return 0;
 }
