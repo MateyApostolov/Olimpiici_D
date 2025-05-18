@@ -51,7 +51,7 @@ int main () {
         }
         curt = ht;
     }
-    for(int r = 1; r <= n; r++) {
+    /*for(int r = 1; r <= n; r++) {
         for(int c = 1; c <= m; c++) {
             if(d2[r][c] == '.' || d2[r][c] == '+') {
                 cout << setw(3) << pc[r][c];
@@ -60,7 +60,7 @@ int main () {
             }
         }
         cout << '\n';
-    }
+    }*/
     cout << td2[outx][outy] - 1 << ' ' << pc[outx][outy];
     return 0;
 }
