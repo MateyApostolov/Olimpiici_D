@@ -19,6 +19,8 @@ bool ok (int d) {
         vector <pair<int, int>> curt;
         curt.push_back({kc[i].second.first, kc[i].second.second});
         bool t = true;
+        if(kc[i].second.first == 1 || kc[i].second.second == 1 || kc[i].second.first == n || kc[i].second.second == m) t = false;
+        vis[kc[i].second.first][kc[i].second.second] = true;
         while(!curt.empty()) {
             vector <pair<int, int>> help;
             for(int x = 0; x < curt.size(); x++) {
