@@ -39,7 +39,7 @@ int main () {
         } else {
             r = mid - 1;
         }
-        cout << l << '\n';
+        ///cout << l << '\n';
     }
     cout << l;
 
