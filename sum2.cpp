@@ -6,7 +6,7 @@ const int d7 = pow(10, 9) + 7;
 int f2 (int num) {
     if(num == 0) return 1;
     if(num == 1) return 1;
-    return (2 * f2(num - 1) + 1) % d7;
+    return ((2 * f2(num - 1)) % d7 + 1) % d7;
 }
 
 int main () {
