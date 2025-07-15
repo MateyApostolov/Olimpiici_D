@@ -4,7 +4,7 @@ using namespace std;
 int main () {
     int n, m;
     cin >> n >> m;
-    int d2[n + 1][m + 1], dp[n + 1][m + 1];
+    long long d2[n + 1][m + 1], dp[n + 1][m + 1];
     for(int r = 0; r <= n; r++) {
         for(int c = 0; c <= m; c++) {
             if(r == 0 || c == 0) dp[r][c] = 0;
