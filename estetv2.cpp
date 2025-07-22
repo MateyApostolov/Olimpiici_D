@@ -14,6 +14,7 @@ int main () {
         if(it != maxi1.end()) *it = nc[i];
         else maxi1.push_back(nc[i]);
         dp1[i] = maxi1.size();
+        it++;
     }
     for(int i = n - 1; i >= 0; i--) {
         auto it = lower_bound(maxi2.begin(), maxi2.end(), nc[i]);
