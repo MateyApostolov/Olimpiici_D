@@ -12,7 +12,7 @@ int main () {
     dp[1][1][0] = 1;
     for(int r = 1; r <= n; r++) {
         for(int c = 1; c <= m; c++) {
-            for(int h = 1; h < p; h++) {
+            for(int h = 1; h < n + m; h++) {
                 dp[r][c][h] = ((dp[r - 1][c][h - 1] + dp[r][c - 1][h - 1]) % d2_62 + dp[r - 1][c - 1][h - 1]) % d2_62;
             }
         }

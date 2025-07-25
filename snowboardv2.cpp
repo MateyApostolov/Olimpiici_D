@@ -12,7 +12,7 @@ int dp (int x, int y, int h) {
     v1 = dp(x - 1, y, h - 1);
     v2 = dp(x, y - 1, h - 1);
     v3 = dp(x - 1, y - 1, h - 1);
-    mm[x][y][h] = (v1 + v2 + v3) % d2_62;
+    mm[x][y][h] = ((v1 + v2) % d2_62 + v3) % d2_62;
     return mm[x][y][h];
 }
 
