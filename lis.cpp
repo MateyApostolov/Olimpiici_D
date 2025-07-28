@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn = 5001;
+const int maxn = pow(10, 5) + 1;
 int dp[maxn];
 
 int main () {
