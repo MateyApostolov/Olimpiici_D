@@ -2,39 +2,39 @@
 using namespace std;
 
 const int maxs = pow(10, 5) + 2;
-int pref[maxs];
+long long pref1[maxs], pref2[maxs];
 
 int main () {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    string s, w, hi;
+    string s, w;
     cin >> s >> w;
-    int q, a, b;
-    for(int i = 0; i < s.size(); i++) {
-        int h = -1;
-        hi.clear();
-        while(i + h + 1 < s.size() && h + 1 < w.size() && s[i + h + 1] == w[h + 1]) {
-            h++;
-            hi.push_back(s[i + h]);
-        }
-       ///cout << hi << '\n';
-        if(hi == w) pref[i]++;
-        if(i != 0) pref[i] += pref[i - 1];
-    }
-    ///for(int i = 0; i < s.size(); i++) cout << pref[i] << ' ';
-    ///cout << '\n' << '\n';
+    long long q, l, r;
     cin >> q;
-    for(int i = 0; i < q; i++) {
-        cin >> a >> b;
-        if(b - a + 1 < 2 * w.size()) {
-            cout << 0 << '\n';
-            continue;
+    for(int i = 1; i <= s.size(); i++) {
+        bool t = true;
+        for(int x = 0; x < w.size(); x++) {
+            if(s[i + x - 1] != w[x]) {
+                t = false;
+                break;
+            }
         }
-        int h;
-        if(a <= 1) h = pref[b - w.size()];
-        else h = pref[b - w.size()] - pref[a - 2];
-        cout << (h * (h - 1)) / 2 << '\n';
+        pref1[i] = pref1[i - 1] + t;
+        if(i >= w.size()) pref2[i] = pref2[i - 1] + t * pref1[i - w.size()];
     }
+    for(int i = 0; i < q; i++) {
+        cin >> l >> r;
+        if(r - l + 1 >= 2 * w.size()) {
+            long long li, ri, ans1, ans2;
+            li = l + w.size() - 1;
+            ri = r - w.size() + 1;
+            ans1 = pref2[ri] - pref2[li];
+            ans2 = (pref1[ri] - pref1[li]) * pref1[l - 1];
+            cout << ans1 - ans2 << '\n';
+
+        } else cout << 0 << '\n';
+    }
+
     return 0;
 }
