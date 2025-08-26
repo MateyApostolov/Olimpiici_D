@@ -18,7 +18,7 @@ pair <int , int> extev(int a , int b) {
 
 signed main () {
     int a, b, c, d;
-    cin >> a >> b;
+    cin >> a >> b >> c;
     d = gcd(a, b);
     if(c % d != 0) {
         cout << "Impossible";
@@ -40,7 +40,7 @@ signed main () {
 
     int x2 = x0 + b * tmax;
     int y2 = y0 - a * tmax;
-
+    cout << abs(x1) + abs(y1) << ' ' << abs(x2) + abs(y2) << '\n';
     cout << min(abs(x1) + abs(y1), abs(x2) + abs(y2));
     return 0;
 }
