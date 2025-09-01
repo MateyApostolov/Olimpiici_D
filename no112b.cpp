@@ -2,7 +2,7 @@
 using namespace std;
 
 const int maxn = 10e3 + 1;
-int par[maxn], sz[maxn];
+int par[maxn], ksz[maxn];
 
 int find_p(int u) {
     if(par[u] == u) return u;
@@ -13,9 +13,9 @@ void union_(int u, int v) {
     u = find_p(u);
     v = find_p(v);
     if(u == v) return;
-    if(sz[u] < sz[v]) swap(u, v);
+    if(ksz[u] < ksz[v]) swap(u, v);
     par[v] = u;
-    sz[u] += sz[v];
+    ksz[u] += ksz[v];
 }
 
 int main () {
@@ -26,7 +26,7 @@ int main () {
     cin >> n >> m;
     for(int i = 1; i <= n; i++) {
         par[i] = i;
-        sz[i] = 1;
+        ksz[i] = 1;
     }
     for(int i = 0; i < m; i++) {
         cin >> u >> v;
