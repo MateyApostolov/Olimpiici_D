@@ -32,6 +32,7 @@ signed main () {
     int x0 = ans.first * c;
     int y0 = ans.second * c;
 
+
     int tmin = ceil(-1.0 * -x0 / b);
     int tmax = floor(1.0 * y0 / a);
 
