@@ -27,9 +27,9 @@ int main () {
     }
     for(int r = 1; r <= n; r++) {
         for(int c = 1; c <= m; c++) {
+            if(d2[r][c] == '0') continue;
             int maxd = min(min(dp1[r - 1][c - 1], dp4[r + 1][c + 1]), min(dp2[r - 1][c + 1], dp3[r + 1][c - 1])) * 2 + 1;
-            if(ans == 0 && (dp1[r][c] == 1 || dp2[r][c] == 1 || dp3[r][c] == 1 || dp4[r][c] == 1)) ans = 1;
-            if(maxd % 2 != 0) ans = max(ans, maxd);
+            ans = max(ans, maxd);
         }
     }
     cout << ans;
