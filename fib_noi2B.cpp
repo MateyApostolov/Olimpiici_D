@@ -2,14 +2,19 @@
 using namespace std;
 
 int main () {
-    int n, pr1 = 1, pr2 = 1, nc;
+    int n, a1 = 1, a2 = 1, st[500] = {};
     cin >> n;
-    for(int i = 3; i <= n; i++) {
-        nc = (pr1 + pr2) % 100;
-        pr2 = pr1;
-        pr1 = nc;
+    map<pair<int, int>, int> mp;
+    for(int i = 3; true; i++) {
+        int a3 = (a1 + a2) % 100;
+        if(mp[{a1, a2}] != 0) break;
+        mp[{a1, a2}] = a3;
+        st[i] = a3;
+        a1 = a2;
+        a2 = a3;
     }
-    cout << pr1;
+    int ans = st[n % mp.size()];
+    if(ans < 10) cout << 0;
+    cout << ans;
     return 0;
 }
-
