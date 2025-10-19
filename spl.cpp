@@ -2,9 +2,9 @@
 using namespace std;
 
 int main () {
-    int n, c, ans = 0;
+    long long n, c, ans = 0;
     cin >> n;
-    vector <int> nc;
+    vector <long long> nc;
     for(int i = 0; i < n; i++) {
         cin >> c;
         nc.push_back(c);
@@ -12,7 +12,7 @@ int main () {
     for(int i = 1; i < n; i++) {
         nc[i] += nc[i - 1];
     }
-    set <int> m;
+    set <long long> m;
     m.insert(0);
     for(auto x : nc) {
         if(m.find(x) != m.end()) {
