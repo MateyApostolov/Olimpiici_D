@@ -4,10 +4,25 @@ using namespace std;
 const int maxn = pow(10, 6) + 1;
 vector <long long> graph[maxn];
 bool vis[maxn];
+long long brs;
+
+void dfs (int x) {
+    for(auto y : graph[x]) {
+        if(vis[y]) continue;
+        vis[y] = true;
+        dfs(y);
+        brs++;
+    }
+    return;
+}
 
 int main () {
-    long long n, m, a, b, ans = 0;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    long long n, m, a, b, ans;
     cin >> n >> m;
+    ans = n * (n - 1) / 2;
     for(int i = 0; i < m; i++) {
         cin >> a >> b;
         graph[a].push_back(b);
@@ -15,23 +30,10 @@ int main () {
     }
     for(int i = 0; i < n; i++) {
         if(vis[i]) continue;
-        queue <int> bfs;
-        bfs.push(i);
-        vis[i] = true;
-        long long brc = 1;
-        while(!bfs.empty()) {
-            int a = bfs.front();
-            bfs.pop();
-            vis[a] = true;
-            for(auto b : graph[a]) {
-                if(vis[b]) continue;
-                bfs.push(b);
-                brc++;
-            }
-        }
-        ans += (brc * (brc - 1)) / 2;
+        dfs(i);
+        ans -= brs * (brs - 1) / 2;
+        brs = 0;
     }
-    ans = (n * (n - 1)) / 2 - ans;
     cout << ans;
     return 0;
 }
