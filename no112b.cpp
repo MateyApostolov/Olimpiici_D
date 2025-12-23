@@ -2,20 +2,20 @@
 using namespace std;
 
 const int maxn = 10e3 + 1;
-int par[maxn], ksz[maxn];
+int par[maxn], sz[maxn];
 
-int find_p(int u) {
+int findp(int u) {
     if(par[u] == u) return u;
-    return par[u] = find_p(par[u]);
+    return par[u] = findp(par[u]);
 }
 
-void union_(int u, int v) {
-    u = find_p(u);
-    v = find_p(v);
+void uni(int u, int v) {
+    u = findp(u);
+    v = findp(v);
     if(u == v) return;
-    if(ksz[u] < ksz[v]) swap(u, v);
+    if(sz[u] < sz[v]) swap(u, v);
     par[v] = u;
-    ksz[u] += ksz[v];
+    sz[u] += sz[v];
 }
 
 int main () {
@@ -26,19 +26,19 @@ int main () {
     cin >> n >> m;
     for(int i = 1; i <= n; i++) {
         par[i] = i;
-        ksz[i] = 1;
+        sz[i] = 1;
     }
     for(int i = 0; i < m; i++) {
         cin >> u >> v;
-        union_(u, v);
+        uni(u, v);
     }
     cin >> q;
     for(int i = 0; i < q; i++) {
         cin >> t >> u >> v;
         if(t == 1) {
-            if(find_p(u) == find_p(v)) cout << 1;
+            if(findp(u) == findp(v)) cout << 1;
             else cout << 0;
-        } else union_(u, v);
+        } else uni(u, v);
     }
 
     return 0;
