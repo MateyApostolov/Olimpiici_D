@@ -21,7 +21,7 @@ void eratosten () {
 long long find_nmd (long long num) {
     for(auto div : prime) {
         if(num % div == 0) return div;
-        if(div * div > num) return num;
+        if(1LL * div * div > num) return num;
     }
     return num;
 }
