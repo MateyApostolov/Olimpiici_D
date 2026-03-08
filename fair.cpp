@@ -7,7 +7,7 @@ int main () {
     cout.tie(NULL);
     long long n, nc, sum = 0, ans  = 0;
     cin >> n;
-    unordered_map <long long, int> mp;
+    map <long long, long long> mp;
     mp[0] = 1;
     for(int i = 0; i < n; i++) {
         cin >> nc;
